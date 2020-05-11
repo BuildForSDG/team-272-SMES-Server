@@ -5,6 +5,8 @@ from user.models import CustomUser
 
 # Create your models here.
 
+#SME model
+
 class SME(CustomUser):
     name_of_business = models.CharField(max_length=120)
     name_of_contact_person = models.CharField(max_length=120)

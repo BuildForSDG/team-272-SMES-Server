@@ -3,6 +3,7 @@ from django.db import models
 from user.models import CustomUser
 # Create your models here.
 
+#funder model
 
 class Funder(CustomUser):
     name_of_business = models.CharField(max_length=120)
