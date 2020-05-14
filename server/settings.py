@@ -30,7 +30,7 @@ ALLOWED_HOSTS = []
 
 # Application definition
 
-INSTALLED_APPS = [
+INSTALLED_APPS = ['rest_framework',
     'user.apps.UserConfig',
     'sme.apps.SmeConfig',
     'funder.apps.FunderConfig',
