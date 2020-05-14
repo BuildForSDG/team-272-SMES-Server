@@ -18,8 +18,24 @@ from django.urls import path
 from django.conf import settings
 from django.conf.urls.static import static
 
+from rest_framework.routers import DefaultRouter
+
+from funder.views import FunderList, FunderDetail, FunderUpdate
+from sme.views import SMEList, SMEDetail, SMEUpdate
+
+router = DefaultRouter()
+router.register('smes', SMEList)
+router.register('funders', FunderList)
+
 #url patterns with media configurations
 
 urlpatterns = [
     path('admin/', admin.site.urls),
+    path('smes/', SMEList.as_view(), name="sme_list"),
+    path('smes/<str:pk>/', SMEDetail.as_view(), name="sme_details"),
+    path('smes/<str:pk>/update/',SMEUpdate.as_view(), name="sme_update"),
+    path('funders/', FunderList.as_view(), name="funders_list"),
+    path('funders/<str:pk>/', FunderDetail.as_view(), name="funders_details"),
+    path('funders/<str:pk>/update/', FunderUpdate.as_view(), name="funders_update")
+
 ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
