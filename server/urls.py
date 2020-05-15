@@ -33,7 +33,7 @@ router.register('funders', FunderList)
 
 
 urlpatterns = [
-    path(r'', include_docs_urls(title='SME_Funders API', public=False)),
+    path(r'/', include_docs_urls(title='SME_Funders API', public=False)),
     path('smes_login/', SMELogin.as_view(), name="smes_login"),
     path('funders_login/', FunderLogin.as_view(), name="funders_login"),
     path('admin/', admin.site.urls),
