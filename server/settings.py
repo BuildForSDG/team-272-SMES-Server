@@ -30,7 +30,10 @@ ALLOWED_HOSTS = []
 
 # Application definition
 
-INSTALLED_APPS = ['rest_framework',
+INSTALLED_APPS = [
+    'rest_framework_swagger',
+    'rest_framework',
+    'rest_framework.authtoken',
     'user.apps.UserConfig',
     'sme.apps.SmeConfig',
     'funder.apps.FunderConfig',
@@ -127,3 +130,15 @@ AUTH_USER_MODEL = 'user.CustomUser'
 # media configurations
 MEDIA_URL = '/media/'
 MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
+
+
+REST_FRAMEWORK = {
+    'DEFAULT_AUTHENTICATION_CLASSES': (
+        'rest_framework.authentication.TokenAuthentication',
+        'rest_framework.authentication.SessionAuthentication',
+    ),
+    'DEFAULT_PERMISSION_CLASSES': (
+        'rest_framework.permissions.IsAuthenticated',
+    )
+}
+

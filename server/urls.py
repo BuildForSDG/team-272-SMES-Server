@@ -19,9 +19,10 @@ from django.conf import settings
 from django.conf.urls.static import static
 
 from rest_framework.routers import DefaultRouter
+from rest_framework_swagger.views import get_swagger_view
 
-from funder.views import FunderList, FunderDetail, FunderUpdate
-from sme.views import SMEList, SMEDetail, SMEUpdate
+from funder.views import FunderLogin, FunderSignup, FunderList, FunderProfile, FunderProfileUpdate
+from sme.views import SMELogin, SMESignup, SMEList, SMEProfile, SMEProfileUpdate
 
 router = DefaultRouter()
 router.register('smes', SMEList)
@@ -29,13 +30,20 @@ router.register('funders', FunderList)
 
 #url patterns with media configurations
 
+schema_view = get_swagger_view(title='SME_Funders API')
+
 urlpatterns = [
+    path(r'swagger-docs/', schema_view),
+    path('smes_login/', SMELogin.as_view(), name="smes_login"),
+    path('funders_login/', FunderLogin.as_view(), name="funders_login"),
     path('admin/', admin.site.urls),
     path('smes/', SMEList.as_view(), name="sme_list"),
-    path('smes/<str:pk>/', SMEDetail.as_view(), name="sme_details"),
-    path('smes/<str:pk>/update/',SMEUpdate.as_view(), name="sme_update"),
+    path('sme_signup/', SMESignup.as_view(), name="sme_signup"),
+    path('smes/<str:pk>/', SMEProfile.as_view(), name="sme_profile"),
+    path('smes/<str:pk>/update/',SMEProfileUpdate.as_view(), name="sme_profile_update"),
     path('funders/', FunderList.as_view(), name="funders_list"),
-    path('funders/<str:pk>/', FunderDetail.as_view(), name="funders_details"),
-    path('funders/<str:pk>/update/', FunderUpdate.as_view(), name="funders_update")
+    path('funder_signup/', FunderSignup.as_view(), name="funder_signup"),
+    path('funders/<int:pk>/', FunderProfile.as_view(), name="funders_profile"),
+    path('funders/<int:pk>/update/', FunderProfileUpdate.as_view(), name="funders_profile_update")
 
 ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
