@@ -10,6 +10,7 @@ django = "*"
 django-rest-framework = "*"
 gunicorn = "*"
 whitenoise = "*"
+coreapi = "*"
 
 [requires]
 python_version = "3.8.0"
