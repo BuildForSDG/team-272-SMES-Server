@@ -10,4 +10,4 @@ django = "*"
 django-rest-framework = "*"
 
 [requires]
-python_version = "3.8"
+python_version = "3.8.0"
