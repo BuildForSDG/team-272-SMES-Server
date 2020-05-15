@@ -19,7 +19,8 @@ from django.conf import settings
 from django.conf.urls.static import static
 
 from rest_framework.routers import DefaultRouter
-from rest_framework_swagger.views import get_swagger_view
+from rest_framework.documentation import include_docs_urls
+
 
 from funder.views import FunderLogin, FunderSignup, FunderList, FunderProfile, FunderProfileUpdate
 from sme.views import SMELogin, SMESignup, SMEList, SMEProfile, SMEProfileUpdate
@@ -30,10 +31,9 @@ router.register('funders', FunderList)
 
 #url patterns with media configurations
 
-schema_view = get_swagger_view(title='SME_Funders API')
 
 urlpatterns = [
-    path(r'swagger-docs/', schema_view),
+    path(r'', include_docs_urls(title='SME_Funders API')),
     path('smes_login/', SMELogin.as_view(), name="smes_login"),
     path('funders_login/', FunderLogin.as_view(), name="funders_login"),
     path('admin/', admin.site.urls),
