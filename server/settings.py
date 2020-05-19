@@ -33,6 +33,7 @@ ALLOWED_HOSTS = ['u-connect.herokuapp.com', '127.0.0.1']
 INSTALLED_APPS = [
     'rest_framework',
     'rest_framework.authtoken',
+    'rest_auth',
     'user.apps.UserConfig',
     'sme.apps.SmeConfig',
     'funder.apps.FunderConfig',

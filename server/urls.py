@@ -14,16 +14,17 @@ Including another URLconf
     2. Add a URL to urlpatterns:  path('blog/', include('blog.urls'))
 """
 from django.contrib import admin
-from django.urls import path
+from django.urls import path, include
 from django.conf import settings
 from django.conf.urls.static import static
 
 from rest_framework.routers import DefaultRouter
 from rest_framework.documentation import include_docs_urls
+import rest_auth.urls
 
 
 from funder.views import FunderLogin, FunderSignup, FunderList, FunderProfile, FunderProfileUpdate
-from sme.views import SMELogin, SMESignup, SMEList, SMEProfile, SMEProfileUpdate
+from sme.views import SMESignup, SMEList, SMEProfile, SMEProfileUpdate
 
 router = DefaultRouter()
 router.register('smes', SMEList)
@@ -34,8 +35,8 @@ router.register('funders', FunderList)
 
 urlpatterns = [
     path(r'', include_docs_urls(title='SME_Funders API', public=False)),
-    path('smes_login/', SMELogin.as_view(), name="smes_login"),
-    path('funders_login/', FunderLogin.as_view(), name="funders_login"),
+    # path('smes_login/', SMELogin.as_view(), name="smes_login"),
+    # path('funders_login/', FunderLogin.as_view(), name="funders_login"),
     path('admin/', admin.site.urls),
     path('smes/', SMEList.as_view(), name="sme_list"),
     path('sme_signup/', SMESignup.as_view(), name="sme_signup"),
@@ -45,6 +46,5 @@ urlpatterns = [
     path('funder_signup/', FunderSignup.as_view(), name="funder_signup"),
     path('funders/<int:pk>/', FunderProfile.as_view(), name="funders_profile"),
     path('funders/<int:pk>/update/', FunderProfileUpdate.as_view(), name="funders_profile_update"),
-
-
+    path('account/', include(rest_auth.urls)),
 ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
