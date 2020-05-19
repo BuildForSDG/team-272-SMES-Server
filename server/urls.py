@@ -44,6 +44,7 @@ urlpatterns = [
     path('funders/', FunderList.as_view(), name="funders_list"),
     path('funder_signup/', FunderSignup.as_view(), name="funder_signup"),
     path('funders/<int:pk>/', FunderProfile.as_view(), name="funders_profile"),
-    path('funders/<int:pk>/update/', FunderProfileUpdate.as_view(), name="funders_profile_update")
+    path('funders/<int:pk>/update/', FunderProfileUpdate.as_view(), name="funders_profile_update"),
+
 
 ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

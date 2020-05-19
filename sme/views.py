@@ -31,7 +31,7 @@ class SMESignup(generics.CreateAPIView):
     serializer_class = SMECreateUserSerializer
 
 class SMEList(generics.ListCreateAPIView):
-    queryset = SME.objects.all()
+    queryset = SME.objects.all().order_by('date_joined')
     serializer_class = SMESerializer
 
 class SMEProfile(generics.RetrieveAPIView):
@@ -41,4 +41,3 @@ class SMEProfile(generics.RetrieveAPIView):
 class SMEProfileUpdate(generics.RetrieveUpdateDestroyAPIView):
     queryset = SME.objects.all()
     serializer_class = SMESerializer
-
