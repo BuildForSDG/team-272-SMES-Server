@@ -13,17 +13,17 @@ from .serializers import SMECreateUserSerializer, SMESerializer
 # Create your views here.
 
 
-class SMELogin(APIView):
-    permission_classes = ()
+# class SMELogin(APIView):
+#     permission_classes = ()
 
-    def post(self, request,):
-        username = request.data.get("username")
-        password = request.data.get("password")
-        user = authenticate(username=username, password=password)
-        if user:
-            return Response({"token": user.auth_token.key})
-        else:
-            return Response({"error": "Wrong Credentials"}, status=status.HTTP_400_BAD_REQUEST)
+#     def post(self, request,):
+#         username = request.data.get("username")
+#         password = request.data.get("password")
+#         user = authenticate(username=username, password=password)
+#         if user:
+#             return Response({"token": user.auth_token.key})
+#         else:
+#             return Response({"error": "Wrong Credentials"}, status=status.HTTP_400_BAD_REQUEST)
 
 class SMESignup(generics.CreateAPIView):
     authentication_classes = ()
@@ -31,7 +31,7 @@ class SMESignup(generics.CreateAPIView):
     serializer_class = SMECreateUserSerializer
 
 class SMEList(generics.ListCreateAPIView):
-    queryset = SME.objects.all()
+    queryset = SME.objects.all().order_by('date_joined')
     serializer_class = SMESerializer
 
 class SMEProfile(generics.RetrieveAPIView):
@@ -41,4 +41,3 @@ class SMEProfile(generics.RetrieveAPIView):
 class SMEProfileUpdate(generics.RetrieveUpdateDestroyAPIView):
     queryset = SME.objects.all()
     serializer_class = SMESerializer
-
