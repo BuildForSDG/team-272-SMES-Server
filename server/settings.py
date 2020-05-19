@@ -23,7 +23,7 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 SECRET_KEY = 'wq9zs1n5hd$4mv66+d@3b#$$n$-vrp5)83$(e-z7h5u$o0fum0'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = False
+DEBUG = True
 
 ALLOWED_HOSTS = ['u-connect.herokuapp.com', '127.0.0.1']
 
@@ -33,6 +33,7 @@ ALLOWED_HOSTS = ['u-connect.herokuapp.com', '127.0.0.1']
 INSTALLED_APPS = [
     'rest_framework',
     'rest_framework.authtoken',
+    'rest_auth',
     'user.apps.UserConfig',
     'sme.apps.SmeConfig',
     'funder.apps.FunderConfig',
@@ -125,7 +126,7 @@ USE_TZ = True
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/3.0/howto/static-files/
 
-STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
+# STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
 
 STATIC_URL = '/static/'
 

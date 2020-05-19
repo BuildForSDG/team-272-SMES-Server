@@ -28,7 +28,7 @@ class FunderSignup(generics.CreateAPIView):
     serializer_class = FunderCreateUserSerializer
 
 class FunderList(generics.ListCreateAPIView):
-    queryset = Funder.objects.all()
+    queryset = Funder.objects.all().order_by('date_joined')
     serializer_class = FunderSerializer
 
 
