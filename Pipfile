@@ -12,6 +12,7 @@ gunicorn = "*"
 whitenoise = "*"
 coreapi = "*"
 django-rest-auth = "==0.9.5"
+django-heroku = "*"
 
 [requires]
 python_version = "3.8.0"
