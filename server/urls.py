@@ -14,13 +14,16 @@ Including another URLconf
     2. Add a URL to urlpatterns:  path('blog/', include('blog.urls'))
 """
 from django.contrib import admin
-from django.urls import path, include
+from django.urls import path, include, re_path
+from django.conf.urls import url
 from django.conf import settings
 from django.conf.urls.static import static
 
 from rest_framework.routers import DefaultRouter
 from rest_framework.documentation import include_docs_urls
-import rest_auth.urls
+# from rest_auth import urls as auth_views
+from rest_auth.views import PasswordResetConfirmView
+
 
 
 from funder.views import FunderLogin, FunderSignup, FunderList, FunderProfile, FunderProfileUpdate
@@ -46,5 +49,11 @@ urlpatterns = [
     path('funder_signup/', FunderSignup.as_view(), name="funder_signup"),
     path('funders/<int:pk>/', FunderProfile.as_view(), name="funders_profile"),
     path('funders/<int:pk>/update/', FunderProfileUpdate.as_view(), name="funders_profile_update"),
-    path('account/', include(rest_auth.urls)),
+    # path('account/', include(rest_auth.urls)),
+    url(r'^account/', include('rest_auth.urls')),
+    re_path(r'^account/password/reset/(?P<uidb64>[0-9A-Za-z_\-]+)/(?P<token>[0-9A-Za-z]{1,13}-[0-9A-Za-z]{1,20})/$', PasswordResetConfirmView.as_view(),
+            name='password_reset_confirm'),
+    # url(r'^account/login/', include('auth_views.login.urls'), name= '' ),
+    # url(r'^account/logout/', include('auth_views.logout.urls'), name=''),
+    # url(r'^account/')
 ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
