@@ -18,7 +18,6 @@ class SMECreateUserSerializer(serializers.ModelSerializer):
         user.save()
         Token.objects.create(user=user)
         return user
-        
 class SMESerializer(serializers.ModelSerializer):
     class Meta:
         model = SME
