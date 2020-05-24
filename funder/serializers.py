@@ -19,9 +19,6 @@ class FunderCreateUserSerializer(serializers.ModelSerializer):
         user.save()
         Token.objects.create(user=user)
         return user
-        
-
-
 class FunderSerializer(serializers.ModelSerializer):
     class Meta:
         model = Funder
