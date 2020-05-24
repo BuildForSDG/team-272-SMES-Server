@@ -5,8 +5,7 @@ from .models import Funder
 
 
 
-class FunderCreateUserSerializer(serializers.ModelSerializer):
-    
+class FunderCreateUserSerializer(serializers.ModelSerializer):    
     class Meta:
         model = Funder
         fields = ('username', 'email', 'password')
