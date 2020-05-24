@@ -4,7 +4,6 @@ from rest_framework.authtoken.models import Token
 from .models import SME
 
 class SMECreateUserSerializer(serializers.ModelSerializer):
-    
     class Meta:
         model = SME
         fields = ('username', 'email', 'password')
