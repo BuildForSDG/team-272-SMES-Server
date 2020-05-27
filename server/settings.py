@@ -155,8 +155,7 @@ REST_FRAMEWORK = {
     'DEFAULT_SCHEMA_CLASS': 'rest_framework.schemas.coreapi.AutoSchema'
 }
 
-# Activate Django-Heroku
-# django_heroku.settings(locals())
+
 
 
 # SMTP Configuration
@@ -167,3 +166,7 @@ EMAIL_PORT = 587
 EMAIL_USE_TLS = True
 EMAIL_HOST_USER = 'u.business.link256@gmail.com'
 EMAIL_HOST_PASSWORD = 'Tryagain01'
+
+
+# Activate Django-Heroku
+# django_heroku.settings(locals())
