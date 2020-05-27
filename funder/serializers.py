@@ -5,13 +5,11 @@ from .models import Funder
 
 
 
-class FunderCreateUserSerializer(serializers.ModelSerializer):
-    
+class FunderCreateUserSerializer(serializers.ModelSerializer):    
     class Meta:
         model = Funder
         fields = ('username', 'email', 'password')
-        extra_kwargs = {'password': {'write_only': True}}
-        
+        extra_kwargs = {'password': {'write_only': True}}        
     def create(self, validated_data):
         user = Funder(
             email=validated_data['email'],
@@ -21,9 +19,6 @@ class FunderCreateUserSerializer(serializers.ModelSerializer):
         user.save()
         Token.objects.create(user=user)
         return user
-        
-
-
 class FunderSerializer(serializers.ModelSerializer):
     class Meta:
         model = Funder
