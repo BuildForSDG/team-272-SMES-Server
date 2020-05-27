@@ -14,3 +14,6 @@ class SME(CustomUser):
     phone = models.CharField(max_length=120)
     financial_records = models.FileField(
         upload_to='docs/SMEs/financial_records')
+
+    def __str__(self):
+        return self.name_of_business
