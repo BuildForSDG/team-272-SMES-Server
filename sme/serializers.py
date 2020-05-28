@@ -1,18 +1,22 @@
 from rest_framework import serializers
 from rest_framework.authtoken.models import Token
 
+
 from .models import SME
 
 class SMECreateUserSerializer(serializers.ModelSerializer):
     class Meta:
         model = SME
-        fields = ('username', 'email', 'password')
+        # fields = ('username', 'email', 'password')
+        fields = ('username', 'name_of_contact_person', 'name_of_business', 'phone', 'email', 'password')
+
         extra_kwargs = {'password': {'write_only': True}}
 
     def create(self, validated_data):
         user = SME(
             email=validated_data['email'],
             username=validated_data['username']
+            
         )
         user.set_password(validated_data['password'])
         user.save()
