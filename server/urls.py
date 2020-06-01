@@ -48,11 +48,10 @@ urlpatterns = [
     path('funder_signup/', FunderSignup.as_view(), name="funder_signup"),
     path('funders/<int:pk>/', FunderProfile.as_view(), name="funders_profile"),
     path('funders/<int:pk>/update/', FunderProfileUpdate.as_view(), name="funders_profile_update"),
-    # path('account/', include(rest_auth.urls)),
+    
     url(r'^account/', include('rest_auth.urls')),
     re_path(r'^account/password/reset/(?P<uidb64>[0-9A-Za-z_\-]+)/(?P<token>[0-9A-Za-z]{1,13}-[0-9A-Za-z]{1,20})/$', PasswordResetConfirmView.as_view(),
             name='password_reset_confirm'),
-    # url(r'^account/login/', include('auth_views.login.urls'), name= '' ),
-    # url(r'^account/logout/', include('auth_views.logout.urls'), name=''),
-    # url(r'^account/')
+    # url(r'^account/registration/', include('rest_auth.registration.urls'))
+    
 ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

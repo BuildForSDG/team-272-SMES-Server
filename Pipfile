@@ -11,7 +11,7 @@ django-rest-framework = "*"
 gunicorn = "*"
 whitenoise = "*"
 coreapi = "*"
-django-rest-auth = "==0.9.5"
+django-rest-auth = {extras = ["with_social"],version = "*"}
 django-heroku = "*"
 
 [requires]
