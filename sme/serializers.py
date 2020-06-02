@@ -5,6 +5,9 @@ from .models import SME
 
 class SMECreateUserSerializer(serializers.ModelSerializer):
     class Meta:
+        """
+        Defining the Meta data to be expected when called.
+        """
         model = SME
         # fields = ('username', 'email', 'password')
         fields = ('username', 'name_of_contact_person',

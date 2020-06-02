@@ -16,4 +16,7 @@ class SME(CustomUser):
         upload_to='docs/SMEs/financial_records')
 
     def __str__(self):
+        """
+        Returns name of business as SME user.
+        """
         return self.name_of_business
