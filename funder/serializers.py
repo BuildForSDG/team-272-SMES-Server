@@ -15,8 +15,7 @@ class FunderCreateUserSerializer(serializers.ModelSerializer):
         extra_kwargs = {'password': {'write_only': True}}
     def create(self, validated_data):
         """
-        creat method for creating a new user through this 
-        serializer.
+        creat method for creating a new user through this serializer.
         """
         user = Funder(
             email=validated_data['email'],
