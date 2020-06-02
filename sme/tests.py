@@ -1,7 +1,7 @@
 from django.test import TestCase
 
 from .models import SME
-from .serializers import SMESerializer, SMECreateUserSerializer
+# from .serializers import SMESerializer, SMECreateUserSerializer
 
 class SMESerializerTest(TestCase):
 
@@ -13,4 +13,3 @@ class SMESerializerTest(TestCase):
         sme = SME.objects.get(id=1)
         expected_object_name = f'{sme.username}'
         self.assertEquals(expected_object_name, 'Test_user')
-    
