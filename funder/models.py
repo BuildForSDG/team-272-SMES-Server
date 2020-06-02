@@ -14,4 +14,7 @@ class Funder(CustomUser):
         upload_to='docs/Funders/financial_records')
 
     def __str__(self):
+        """
+        Returns name of the business when called.
+        """
         return self.name_of_business

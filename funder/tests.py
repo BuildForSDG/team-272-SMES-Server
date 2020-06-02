@@ -1,7 +1,7 @@
 from django.test import TestCase
 
 from .models import Funder
-from .serializers import FunderSerializer, FunderCreateUserSerializer
+# from .serializers import FunderSerializer, FunderCreateUserSerializer
 
 class FunderSerializerTest(TestCase):
 
@@ -13,4 +13,3 @@ class FunderSerializerTest(TestCase):
         funder = Funder.objects.get(id=1)
         expected_object_name = f'{funder.username}'
         self.assertEquals(expected_object_name, 'Test_funder')
-    
