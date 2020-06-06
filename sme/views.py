@@ -6,7 +6,7 @@ from rest_framework import generics
 # from rest_framework.exceptions import PermissionDenied
 # from django.contrib.auth import  authenticate
 
-
+from .permissions import IsAccountOwnerOrReadOnly
 from .models import SME
 from .serializers import SMECreateUserSerializer, SMESerializer
 
@@ -30,14 +30,18 @@ class SMESignup(generics.CreateAPIView):
     permission_classes = ()
     serializer_class = SMECreateUserSerializer
 
+
 class SMEList(generics.ListCreateAPIView):
     queryset = SME.objects.all().order_by('date_joined')
     serializer_class = SMESerializer
+
 
 class SMEProfile(generics.RetrieveAPIView):
     queryset = SME.objects.all()
     serializer_class = SMESerializer
 
+
 class SMEProfileUpdate(generics.RetrieveUpdateDestroyAPIView):
+    permission_classes = (IsAccountOwnerOrReadOnly, )
     queryset = SME.objects.all()
     serializer_class = SMESerializer
